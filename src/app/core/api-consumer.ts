@@ -1,8 +1,8 @@
-import {HttpClient} from '@angular/common/http';
-import {Injectable} from '@angular/core';
-import {firstValueFrom} from 'rxjs';
+import { Injectable } from '@angular/core';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {ModuleType} from './module-type';
-import {environment} from '../environments/environment';
+import {catchError, Observable, throwError} from 'rxjs';
+import { environment } from '../environments/environment';
 
 @Injectable({providedIn: 'root'})
 
@@ -19,34 +19,20 @@ export class ApiConsumer
     return `${this.server}/${module}/${resource.replace(/^\/+/, '')}`;
   }
 
-  async get<T>(module: ModuleType, resource: string, defaultResult: T): Promise<T>
+  get<T>(module: ModuleType, resource: string, defaultResult: T): Observable<T>
   {
     const url = this.buildUri(module, resource);
 
-    try
-    {
-      return await firstValueFrom(this.httpClient.get<T>(url));
-    }
-    catch (error: any)
-    {
-      this.handleError(error);
-      return defaultResult;
-    }
+    return this.httpClient.get<T>(url).pipe(
+      catchError((error) => this.handleError<T>(error, defaultResult)));
   }
 
-  async getFile(module: ModuleType, resource: string): Promise<Blob>
-  {
+  getFile(module: ModuleType, resource: string): Observable<Blob> {
     const url = this.buildUri(module, resource);
 
-    try
-    {
-      return await firstValueFrom(this.httpClient.get(url, { responseType: 'blob' }));
-    }
-    catch (error: any)
-    {
-      this.handleError(error);
-      return new Blob();
-    }
+    return this.httpClient.get(url, { responseType: 'blob' }).pipe(
+      catchError((error) => this.handleError<Blob>(error, new Blob()))
+    );
   }
 
   private getServerUri(): string
@@ -61,14 +47,9 @@ export class ApiConsumer
     return `${api}/v6`;
   }
 
-  private handleError(error: any): void
+  private handleError<T>(error: HttpErrorResponse, fallback: T): Observable<T>
   {
-    if (error.error?.detail)
-    {
-      console.error('API Error:', error.error.detail);
-      throw new Error(error.error.detail);
-    }
-
-    throw new Error('Unexpected API error.git');
+    console.error('API error:', error);
+    return throwError(() => new Error(error.error?.detail || 'Error de servidor'));
   }
 }
