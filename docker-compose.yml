@@ -1,0 +1,15 @@
+services:
+  site:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    container_name: site
+    ports:
+      - '4003:80'
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    external: true
