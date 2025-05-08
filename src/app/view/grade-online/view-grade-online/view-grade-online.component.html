@@ -1,1 +1,27 @@
 <p>view-grade-online works!</p>
+
+<form (ngSubmit)="getStudent()">
+  <label>
+    Código:
+    <input type="text" [(ngModel)]="studentDto.studentId" name="nombre" required>
+  </label>
+  <br>
+
+  <label>
+    Contraseña:
+    <input type="text" [(ngModel)]="studentDto.token" name="codigo" required>
+  </label>
+  <br>
+
+  <button type="submit">Obtener información</button>
+</form>
+
+<div *ngIf="student | async as student">
+  <h2>Datos del estudiante</h2>
+  <p> Código: {{ student.studentId }}</p>
+  <p> Nombre completo: {{ student.studentName }}</p>
+  <p> Matrícula: {{ student.enrollment }}</p>
+  <p> Docente guía: {{ student.teacherName }}</p>
+  <p> ¿Tiene solvencia? : {{ student.hasSolvency }}</p>
+</div>
+
