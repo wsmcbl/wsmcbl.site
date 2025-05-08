@@ -9,27 +9,27 @@ import {FormsModule} from '@angular/forms';
 @Injectable({providedIn: 'root'})
 
 @Component({
-  selector: 'app-view-grade-online',
-  imports: [
-    AsyncPipe,
-    NgIf,
-    FormsModule
-  ],
-  templateUrl: './view-grade-online.component.html',
-  styleUrl: './view-grade-online.component.css'
+    selector: 'app-view-grade-online',
+    imports: [
+        AsyncPipe,
+        NgIf,
+        FormsModule
+    ],
+    templateUrl: './view-grade-online.component.html',
+    styleUrl: './view-grade-online.component.css'
 })
 
 export class ViewGradeOnlineComponent
 {
-  student?: Observable<StudentDto>;
-  studentDto: BasicStudentDto = {};
+    student?: Observable<StudentDto>;
+    studentDto: BasicStudentDto = {};
 
-  constructor(private controller : ViewGradeOnlineController)
-  {
-  }
+    constructor(private controller: ViewGradeOnlineController)
+    {
+    }
 
-  getStudent(): void
-  {
-    this.student = this.controller.getStudent(this.studentDto!);
-  }
+    getStudent(): void
+    {
+        this.student = this.controller.getStudent(this.studentDto!);
+    }
 }

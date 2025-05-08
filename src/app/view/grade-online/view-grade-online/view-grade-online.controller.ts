@@ -9,11 +9,14 @@ import {Injectable} from '@angular/core';
 
 export class ViewGradeOnlineController
 {
-  constructor(private readonly apiConsumer: ApiConsumer){}
+    constructor(private readonly apiConsumer: ApiConsumer)
+    {
+    }
 
-  getStudent(dto: BasicStudentDto): Observable<StudentDto>
-  {
-    return this.apiConsumer.get(ModuleType.Academy, `students/${dto.studentId}?token=${dto.token}`, new StudentDto({}))
-    .pipe(map(data => StudentDto.fromJson(data)));
-  }
+    getStudent(dto: BasicStudentDto): Observable<StudentDto>
+    {
+        return this.apiConsumer.get(ModuleType.Academy, `students/${dto.studentId}?token=${dto.token}`, new StudentDto({}))
+            .pipe(map(data => StudentDto.fromJson(data)));
+    }
 }
+
