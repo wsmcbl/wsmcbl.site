@@ -1,0 +1,130 @@
+<!-- Faq Section -->
+<section class="py-7">
+    <div class="container">
+        <div class="row">
+            <!-- Contenido de preguntas -->
+            <div class="col-lg-7 ms-auto me-auto">
+                <div class="mb-5">
+                    <h3 class="text-gradient text-primary mb-0">Preguntas</h3>
+                    <h2 class="mb-3">Frecuentes</h2>
+                    <p class="text-muted">
+                        Estas son algunas de las preguntas más frecuentes, no dudes en contactarnos si aún te quedan dudas.
+                        <a href="mailto:info@cbl-edu.com" class="text-primary">info&#64;cbl-edu.com</a>
+                    </p>
+                </div>
+
+                <!-- Acordeón de preguntas mejorado -->
+                <div class="accordion" id="faqAccordion">
+
+                    <div class="card card-body mb-1">
+                        <!-- Pregunta 1 -->
+                        <div class="accordion-item mb-3 border-radius-xl">
+                            <h5 class="accordion-header" id="headingOne">
+                                <button class="accordion-button shadow-none py-3 d-flex align-items-center" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <i class="material-symbols-rounded text-primary me-2">help_outline</i>
+                                    <span class="flex-grow-1 text-start">¿Cuáles son los requisitos para matricular?</span>
+                                    <i class="material-symbols-rounded text-primary ms-2 accordion-icon">expand_less</i>
+                                </button>
+                            </h5>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-muted">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item ps-0">Hoja de traslado (Original)</li>
+                                        <li class="list-group-item ps-0">Constancia de conducta (Copia)</li>
+                                        <li class="list-group-item ps-0">Partida de nacimiento (Copia)</li>
+                                        <li class="list-group-item ps-0">Cédula de los padres (Copia)</li>
+                                        <li class="list-group-item ps-0">Boletín anterior (Copia)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 2 -->
+                    <div class="card card-body mb-1">
+                        <div class="accordion-item mb-3 border-radius-xl">
+                            <h5 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button shadow-none py-3 collapsed d-flex align-items-center" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    <i class="material-symbols-rounded text-primary me-2">help_outline</i>
+                                    <span class="flex-grow-1 text-start">¿Cómo veo mis calificaciones?</span>
+                                    <i class="material-symbols-rounded text-primary ms-2 accordion-icon">expand_more</i>
+                                </button>
+                            </h5>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-muted">
+                                    Las calificaciones están disponibles haciendo clic
+                                    <a href="/view-grades" class="text-primary">aquí</a>.
+                                    Debes tener las credenciales a mano para poder acceder.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 3 -->
+                    <div class="card card-body mb-1">
+                        <div class="accordion-item mb-3 border-radius-xl">
+                            <h5 class="accordion-header" id="headingThree">
+                                <button class="accordion-button shadow-none py-3 collapsed d-flex align-items-center" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    <i class="material-symbols-rounded text-primary me-2">help_outline</i>
+                                    <span class="flex-grow-1 text-start">¿Cómo obtengo mis credenciales?</span>
+                                    <i class="material-symbols-rounded text-primary ms-2 accordion-icon">expand_more</i>
+                                </button>
+                            </h5>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-muted">
+                                    Las credenciales son entregadas en el momento de la matrícula, si por alguna razón no tienes acceso a esta información envíanos un correo a
+                                    <a href="mailto:soporte@cbl-edu.com" class="text-primary">soporte&#64;cbl-edu.com</a>
+                                    o visítanos en nuestras instalaciones.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+            <!-- Imagen -->
+            <div class="col-lg-5 d-flex align-items-center">
+                <div class="position-relative w-100">
+                    <img src="assets/material-kit-3/img/faq.jpg" class="img-fluid border-radius-xl shadow-lg" alt="Preguntas frecuentes">
+                    <div class="position-absolute top-0 start-0 w-100 h-100 rounded-xl"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<style>
+    .accordion-button .accordion-icon {
+        transition: transform 0.3s ease;
+    }
+
+    .accordion-button:not(.collapsed) .accordion-icon {
+        transform: rotate(180deg);
+    }
+
+    .accordion-button {
+        align-items: center;
+    }
+
+    .list-group-item {
+        border-left: none;
+        border-right: none;
+    }
+</style>
+
+<script>
+    document.querySelectorAll('.accordion-button').forEach(button => {
+        button.addEventListener('click', function() {
+            const icon = this.querySelector('.accordion-icon');
+            if (this.classList.contains('collapsed')) {
+                icon.textContent = 'expand_more';
+            } else {
+                icon.textContent = 'expand_less';
+            }
+        });
+    });
+</script>
