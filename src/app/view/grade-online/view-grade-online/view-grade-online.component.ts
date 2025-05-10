@@ -1,7 +1,7 @@
 import {Component, Injectable} from '@angular/core';
 import {ViewGradeOnlineController} from './view-grade-online.controller';
 import {StudentDto} from './student.dto';
-import { SafePipe } from './safe.pipe';
+import {SafePipe} from './safe.pipe';
 import {NgIf} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 
@@ -21,7 +21,7 @@ import {FormsModule} from '@angular/forms';
 export class ViewGradeOnlineComponent
 {
     studentData: StudentDto | null = null;
-    studentDto: { studentId: string, token: string } = { studentId: '', token: '' };
+    studentDto: { studentId: string, token: string } = {studentId: '', token: ''};
     isLoading = false;
     errorMessage = '';
     pdfUrl: string | null = null;
@@ -31,51 +31,58 @@ export class ViewGradeOnlineComponent
     {
     }
 
-    onSubmit(form: any): void {
-        if (form.valid) {
+    onSubmit(form: any): void
+    {
+        if (form.valid)
+        {
             this.isLoading = true;
             this.errorMessage = '';
 
             this.controller.getStudent(this.studentDto).subscribe({
-                next: (student) => {
+                next: (student) =>
+                {
                     this.isLoading = false;
                     this.studentData = student;
-                    console.log('Student data:', student);
+                    if (student.hasSolvency)
+                    {
+                        this.getStudentFile();
+                    }
                 },
-                error: (err) => {
+                error: (err) =>
+                {
                     this.isLoading = false;
                     this.errorMessage = 'Credenciales incorrectas';
                     console.error('Login error:', err);
                 }
             });
-
-            if(!this.studentData){
-                this.getStudentFile();
-            }
-
         }
     }
 
-    logout(): void {
+    logout(): void
+    {
         this.studentData = null;
-        this.studentDto = { studentId: '', token: '' };
+        this.studentDto = {studentId: '', token: ''};
     }
 
-    getStudentFile(): void {
+    getStudentFile(): void
+    {
         this.isPdfLoading = true;
         this.controller.getStudentFile(this.studentDto).subscribe({
-            next: (blob) => {
+            next: (blob) =>
+            {
                 this.isPdfLoading = false;
                 this.pdfUrl = URL.createObjectURL(blob);
             },
-            error: (err) => {
+            error: (err) =>
+            {
                 this.isPdfLoading = false;
                 console.error('Error al obtener PDF:', err);
             }
         });
     }
 
-    downloadFileFromUrl(): void {
+    downloadFileFromUrl(): void
+    {
         if (!this.pdfUrl) return;
 
         const a = document.createElement('a');

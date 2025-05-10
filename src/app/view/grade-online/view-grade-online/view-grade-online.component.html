@@ -93,11 +93,6 @@
                                     <div class="card-body">
                                         <!-- Botones de acción -->
                                         <div class="d-flex justify-content-between mb-4">
-                                            <button (click)="getStudentFile()" class="btn bg-gradient-dark" [disabled]="isPdfLoading">
-                                                <span *ngIf="!isPdfLoading">Ver Calificaciones PDF</span>
-                                                <span *ngIf="isPdfLoading">Cargando PDF...</span>
-                                            </button>
-
                                             <button *ngIf="pdfUrl" (click)="downloadFileFromUrl()" class="btn bg-gradient-info">
                                                 <i class="fas fa-download me-2"></i>Descargar PDF
                                             </button>
