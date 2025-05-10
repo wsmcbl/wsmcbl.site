@@ -1,5 +1,6 @@
-
-<div class="page-header align-items-start min-vh-100" style="background-image: url('https://images.unsplash.com/photo-1497294815431-9365093b7331?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80');" loading="lazy">
+<div class="page-header align-items-start min-vh-100"
+     style="background-image: url('https://images.unsplash.com/photo-1497294815431-9365093b7331?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80');"
+>
     <span class="mask bg-gradient-dark opacity-6"></span>
     <div class="container my-auto">
 
@@ -18,21 +19,28 @@
                         <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" role="form" class="text-start">
                             <div class="input-group input-group-outline my-3">
                                 <label class="form-label">Código del estudiante</label>
-                                <input type="text" class="form-control" name="studentId" [(ngModel)]="studentDto.studentId" required>
+                                <input type="text" class="form-control" name="studentId"
+                                       [(ngModel)]="studentDto.studentId" required>
                             </div>
                             <div class="input-group input-group-outline mb-3">
                                 <label class="form-label">Contraseña</label>
-                                <input type="password" class="form-control" name="token" [(ngModel)]="studentDto.token" required>
+                                <input type="password" class="form-control" name="token" [(ngModel)]="studentDto.token"
+                                       required>
                             </div>
                             <div *ngIf="errorMessage" class="alert alert-danger text-white">
-                                {{errorMessage}}
+                                {{ errorMessage }}
                             </div>
                             <div class="text-center">
-                                <button type="submit" [disabled]="isLoading" class="btn bg-gradient-dark w-100 my-4 mb-2">
+                                <button type="submit" [disabled]="isLoading"
+                                        class="btn bg-gradient-dark w-100 my-4 mb-2">
                                     <span *ngIf="!isLoading">Ver calificaciones</span>
                                     <span *ngIf="isLoading">Cargando...</span>
                                 </button>
                             </div>
+                            <p class="mt-4 text-sm text-center">
+                                Si tiene algún problema con esta paso, no dude en contactarnos a
+                                <a href="mailto:soporte@cbl-edu.com" class="text-primary font-weight-semibold">soporte&#64;cbl-edu.com</a>
+                            </p>
                         </form>
                     </div>
                 </div>
@@ -41,12 +49,12 @@
 
         <!-- Vista of details students -->
         <div class="row" *ngIf="studentData">
-            <div class="col-lg-8 col-md-10 col-12 mx-auto">
-                <div class="card z-index-0 fadeIn3 fadeInBottom">
-                    <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+            <div class="col-lg-9 col-md-10 col-12 mx-auto">
+                <div class="card z-index-0 fadeIn3 fadeInBottom mt-4">
+                    <div class="card-header p-0 position-relative mt-4 mx-3 z-index-2">
                         <div class="bg-gradient-success shadow-success border-radius-lg py-3 pe-1">
                             <h4 class="text-white font-weight-bolder text-center mt-2 mb-0">
-                                Bienvenido, {{studentData.studentName}}
+                                Bienvenido, {{ studentData.studentName }}
                             </h4>
                         </div>
                     </div>
@@ -57,19 +65,20 @@
                                     <h5 class="font-weight-bolder">Información del Estudiante</h5>
                                     <ul class="list-group">
                                         <li class="list-group-item border-0 ps-0 pt-0 text-sm">
-                                            <strong class="text-dark">ID Estudiante:</strong> {{studentData.studentId}}
+                                            <strong class="text-dark">ID
+                                                Estudiante:</strong> {{ studentData.studentId }}
                                         </li>
                                         <li class="list-group-item border-0 ps-0 text-sm">
-                                            <strong class="text-dark">Matrícula:</strong> {{studentData.enrollment}}
+                                            <strong class="text-dark">Matrícula:</strong> {{ studentData.enrollment }}
                                         </li>
                                         <li class="list-group-item border-0 ps-0 text-sm">
-                                            <strong class="text-dark">Profesor:</strong> {{studentData.teacherName}}
+                                            <strong class="text-dark">Profesor:</strong> {{ studentData.teacherName }}
                                         </li>
                                         <li class="list-group-item border-0 ps-0 text-sm">
                                             <strong class="text-dark">Solvencia:</strong>
                                             <span [class.text-success]="studentData.hasSolvency"
                                                   [class.text-danger]="!studentData.hasSolvency">
-                                                {{studentData.hasSolvency ? 'Al día' : 'Pendiente'}}
+                                                {{ studentData.hasSolvency ? 'Al día' : 'Pendiente' }}
                                             </span>
                                         </li>
                                     </ul>
@@ -93,7 +102,8 @@
                                     <div class="card-body">
                                         <!-- Botones de acción -->
                                         <div class="d-flex justify-content-between mb-4">
-                                            <button *ngIf="pdfUrl" (click)="downloadFileFromUrl()" class="btn bg-gradient-info">
+                                            <button *ngIf="pdfUrl" (click)="downloadFileFromUrl()"
+                                                    class="btn bg-gradient-info">
                                                 <i class="fas fa-download me-2"></i>Descargar PDF
                                             </button>
                                         </div>
@@ -106,7 +116,8 @@
                                             <p class="mt-2">Cargando documento...</p>
                                         </div>
 
-                                        <div *ngIf="pdfUrl && !isPdfLoading" class="embed-responsive embed-responsive-16by9">
+                                        <div *ngIf="pdfUrl && !isPdfLoading"
+                                             class="embed-responsive embed-responsive-16by9">
                                             <iframe
                                                 [src]="pdfUrl | safe"
                                                 class="embed-responsive-item w-100"

@@ -1,72 +1,62 @@
-<div class="container position-sticky z-index-sticky top-0">
-    <div class="row">
-        <div class="col-12">
-            <nav
-                class="navbar navbar-expand-lg  blur border-radius-xl top-0 z-index-fixed shadow position-absolute my-3 p-2 start-0 end-0 mx-4">
-                <div class="container-fluid px-0">
-                    <a class="navbar-brand font-weight-bolder ms-sm-3 text-sm" href="/" rel="tooltip"
-                       title="Colegio Bautista Libertad" data-placement="bottom">
-                        Colegio Bautista Libertad
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white z-index-3 py-3">
+    <div class="container">
+        <a class="navbar-brand font-weight-bolder ms-sm-3" href="/" rel="tooltip" title="Colegio Bautista Libertad" data-placement="bottom">
+            Colegio Bautista Libertad
+        </a>
+        <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon mt-2">
+        <span class="navbar-toggler-bar bar1"></span>
+        <span class="navbar-toggler-bar bar2"></span>
+        <span class="navbar-toggler-bar bar3"></span>
+      </span>
+        </button>
+        <div class="collapse navbar-collapse w-100 pt-3 pb-2 py-lg-0" id="navigation">
+            <ul class="navbar-nav navbar-nav-hover mx-auto">
+                <li class="nav-item mx-2">
+                    <a class="nav-link ps-2 d-flex align-items-center font-weight-semibold" href="/">
+                        <i class="material-symbols-rounded opacity-6 me-2 text-md">home</i>
+                        <span>Inicio</span>
                     </a>
-                    <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false"
-                            aria-label="Toggle navigation">
-                              <span class="navbar-toggler-icon mt-2">
-                                <span class="navbar-toggler-bar bar1"></span>
-                                <span class="navbar-toggler-bar bar2"></span>
-                                <span class="navbar-toggler-bar bar3"></span>
-                              </span>
-                    </button>
-                    <div class="collapse navbar-collapse pt-3 pb-2 py-lg-0 w-100" id="navigation">
-                        <ul class="navbar-nav navbar-nav-hover ms-auto">
-                            <li class="nav-item mx-2">
-                                <a class="nav-link ps-2 d-flex align-items-center font-weight-semibold" href="/">
-                                    <i class="material-symbols-rounded opacity-6 me-2 text-md">home</i>
-                                    <span>Inicio</span>
-                                </a>
-                            </li>
-                            <li class="nav-item mx-2">
-                                <a class="nav-link ps-2 d-flex align-items-center font-weight-semibold"
-                                   href="/view-grades">
-                                    <i class="material-symbols-rounded opacity-6 me-2 text-md">school</i>
-                                    <span>Ver calificaciones</span>
-                                </a>
-                            </li>
-                            <li class="nav-item mx-2">
-                                <a class="nav-link ps-2 d-flex align-items-center font-weight-semibold" href="/">
-                                    <i class="material-symbols-rounded opacity-6 me-2 text-md">description</i>
-                                    <span>Ver reglamento</span>
-                                </a>
-                            </li>
-                            <li class="nav-item mx-2">
-                                <a class="nav-link ps-2 d-flex align-items-center font-weight-semibold"
-                                   href="https://nextcloud.cbl-edu.com/login">
-                                    <i class="material-symbols-rounded opacity-6 me-2 text-md">cloud</i>
-                                    <span>Next-Cloud</span>
-                                </a>
-                            </li>
-                            <li class="nav-item mx-2">
-                                <a class="nav-link ps-2 d-flex align-items-center font-weight-semibold"
-                                   href="https://wsm.cbl-edu.com/">
-                                    <i class="material-symbols-rounded opacity-6 me-2 text-md">account_box</i>
-                                    <span>WSM-CBL</span>
-                                </a>
-                            </li>
-                            <li class="nav-item ms-lg-auto">
-                                <a class="nav-link nav-link-icon me-2"
-                                   href="https://www.facebook.com/100063819162602" target="_blank">
-                                    <i class="fa fa-facebook me-1"></i>
-                                    <p class="d-inline text-sm z-index-1 font-weight-semibold"
-                                       data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                       title="Siguenos en facebook">Facebook</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-            <!-- End Navbar -->
+                </li>
+
+                <li class="nav-item mx-2">
+                    <a class="nav-link ps-2 d-flex align-items-center font-weight-semibold" href="/view-grades">
+                        <i class="material-symbols-rounded opacity-6 me-2 text-md">school</i>
+                        <span>Ver calificaciones</span>
+                    </a>
+                </li>
+                <li class="nav-item mx-2">
+                    <a class="nav-link ps-2 d-flex align-items-center font-weight-semibold" href="/">
+                        <i class="material-symbols-rounded opacity-6 me-2 text-md">description</i>
+                        <span>Ver reglamento</span>
+                    </a>
+                </li>
+
+                <li class="nav-item dropdown dropdown-hover mx-2">
+                    <a class="nav-link ps-2 d-flex align-items-center font-weight-semibold" href="https://nextcloud.cbl-edu.com/login">
+                        <i class="material-symbols-rounded opacity-6 me-2 text-md">cloud</i>
+                        <span>Next-Cloud</span>
+                    </a>
+                </li>
+
+                <li class="nav-item dropdown dropdown-hover mx-2">
+                    <a class="nav-link ps-2 d-flex align-items-center font-weight-semibold" href="https://wsm.cbl-edu.com/">
+                        <i class="material-symbols-rounded opacity-6 me-2 text-md">account_box</i>
+                        <span>WSM-CBL</span>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav d-lg-block d-none">
+                <li class="nav-item">
+                    <a class="nav-link nav-link-icon me-2" href="https://www.facebook.com/100063819162602" target="_blank">
+                        <i class="fa fa-facebook me-1"></i>
+                        <p class="d-inline text-sm z-index-1 font-weight-semibold">Facebook</p>
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
-</div>
-
+</nav>
+<!-- End Navbar -->
