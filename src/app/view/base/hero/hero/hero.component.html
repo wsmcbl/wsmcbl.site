@@ -1,16 +1,92 @@
-<div class="page-header min-vh-100" style="background-image: url('assets/material-kit-3/img/bg2.jpg');" loading="lazy">
-        <span class="mask bg-gradient-dark opacity-5">
-    </span>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 col-md-7 d-flex justify-content-center flex-column">
-                <h1 class="text-white font-weight-black mb-4">Colegio Bautista Libertad</h1>
-                <p class="text-white opacity-8 lead pe-5 me-5">Educando a las generaciones futuras con Amor. </p>
-                <div class="buttons">
-                    <a class="btn btn-white mt-4" href="/view-grades">Ver Calificaciones </a>
-                    <a class="btn text-white shadow-none mt-4" href="/">Ver reglamento </a>
+<!-- Hero Section -->
+<section id="home" class="position-relative overflow-hidden bg-gradient-dark" style="min-height: 90vh;">
+    <!-- Background Image with Dark Overlay -->
+    <div class="position-absolute w-100 h-100">
+        <div class="position-absolute w-100 h-100 bg-gradient-dark" style="opacity: 0.85;"></div>
+        <img ngSrc="assets/material-kit-3/img/hero-bg-2.jpg" alt="Background" class="w-100 h-100 object-fit-cover"
+             height="1280" width="1920">
+    </div>
+
+    <div class="container h-100 d-flex align-items-center py-4">
+        <div class="row w-100">
+            <!-- Logo Column - First on mobile -->
+            <div class="col-lg-5 col-12 order-1 order-lg-2 mb-3 mb-md-4 mt-7">
+                <div class="d-flex justify-content-center justify-content-lg-end position-relative z-index-2">
+                    <img src="assets/material-kit-3/img/logos/CBL_COLOR.png"
+                         class="img-fluid"
+                         alt="Logo colegio"
+                         style="max-height: min(50vw, 350px); object-fit: contain; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.25));">
+                </div>
+            </div>
+
+            <!-- Content Column - Second on mobile -->
+            <div class="col-lg-7 col-12 order-2 order-lg-1 mt-7">
+                <div class="text-white position-relative z-index-2">
+                    <h1 class="display-5 font-weight-bolder mb-3 text-white">Educando a las generaciones futuras con <span class="text-primary">Amor</span></h1>
+                    <p class="lead mb-4" style="font-size: 1.1rem; opacity: 0.9;">Porque Jehová da la sabiduría, Y de su boca viene el conocimiento y la inteligencia. Prov. 2:6 RVR1960</p>
+
+                    <!-- Buttons -->
+                    <div class="d-flex flex-wrap gap-3">
+                        <a class="btn btn-white bg-white text-dark font-weight-bold px-3 py-2" href="/view-grades">
+                            Ver Calificaciones
+                        </a>
+                        <a class="btn btn-outline-white border-2 text-white font-weight-bold px-3 py-2" href="/">
+                            Ver Reglamento
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
+    <!-- Waves SVG -->
+    <div class="position-absolute bottom-0 w-100">
+        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 40" preserveAspectRatio="none" shape-rendering="auto">
+            <defs>
+                <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
+            </defs>
+            <g class="moving-waves">
+                <use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255,0.2)"></use>
+                <use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255,0.3)"></use>
+                <use xlink:href="#wave-path" x="50" y="5" fill="rgba(255,255,255,0.5)"></use>
+                <use xlink:href="#wave-path" x="50" y="7" fill="rgba(255,255,255,0.7)"></use>
+                <use xlink:href="#wave-path" x="50" y="9" fill="#fff"></use>
+            </g>
+        </svg>
+    </div>
+</section>
+
+<style>
+    /* Ajustes para móviles */
+    @media (max-width: 992px) {
+        #home {
+            min-height: auto;
+            padding: 0;
+        }
+
+        .container.py-4 {
+            padding-top: 1rem !important;
+            padding-bottom: 1rem !important;
+        }
+
+        .img-fluid {
+            max-height: 180px !important;
+            margin-bottom: 1.5rem !important;
+        }
+
+        .display-5 {
+            font-size: 1.8rem !important;
+            margin-bottom: 1rem !important;
+        }
+
+        .lead {
+            font-size: 1rem !important;
+            margin-bottom: 1.5rem !important;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem !important;
+            font-size: 0.9rem;
+        }
+    }
+</style>
