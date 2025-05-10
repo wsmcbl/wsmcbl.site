@@ -18,5 +18,10 @@ export class ViewGradeOnlineController
         return this.apiConsumer.get(ModuleType.Academy, `students/${dto.studentId}?token=${dto.token}`, new StudentDto({}))
             .pipe(map(data => StudentDto.fromJson(data)));
     }
+
+    getStudentFile(dto: BasicStudentDto): Observable<Blob>
+    {
+        return this.apiConsumer.getFile(ModuleType.Academy, `students/${dto.studentId}/grades/export?token=${dto.token}`);
+    }
 }
 

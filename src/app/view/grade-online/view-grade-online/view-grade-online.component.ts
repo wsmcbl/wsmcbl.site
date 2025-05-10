@@ -1,6 +1,7 @@
 import {Component, Injectable} from '@angular/core';
 import {ViewGradeOnlineController} from './view-grade-online.controller';
 import {StudentDto} from './student.dto';
+import { SafePipe } from './safe.pipe';
 import {NgIf} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 
@@ -10,7 +11,8 @@ import {FormsModule} from '@angular/forms';
     selector: 'app-view-grade-online',
     imports: [
         NgIf,
-        FormsModule
+        FormsModule,
+        SafePipe,
     ],
     templateUrl: './view-grade-online.component.html',
     styleUrl: './view-grade-online.component.css'
@@ -22,6 +24,8 @@ export class ViewGradeOnlineComponent
     studentDto: { studentId: string, token: string } = { studentId: '', token: '' };
     isLoading = false;
     errorMessage = '';
+    pdfUrl: string | null = null;
+    isPdfLoading = false;
 
     constructor(private controller: ViewGradeOnlineController)
     {
@@ -36,6 +40,7 @@ export class ViewGradeOnlineComponent
                 next: (student) => {
                     this.isLoading = false;
                     this.studentData = student;
+                    console.log('Student data:', student);
                 },
                 error: (err) => {
                     this.isLoading = false;
@@ -43,11 +48,42 @@ export class ViewGradeOnlineComponent
                     console.error('Login error:', err);
                 }
             });
+
+            if(!this.studentData){
+                this.getStudentFile();
+            }
+
         }
     }
 
     logout(): void {
-        this.studentData = null; // Vuelve a mostrar el formulario de login
+        this.studentData = null;
+        this.studentDto = { studentId: '', token: '' };
+    }
+
+    getStudentFile(): void {
+        this.isPdfLoading = true;
+        this.controller.getStudentFile(this.studentDto).subscribe({
+            next: (blob) => {
+                this.isPdfLoading = false;
+                this.pdfUrl = URL.createObjectURL(blob);
+            },
+            error: (err) => {
+                this.isPdfLoading = false;
+                console.error('Error al obtener PDF:', err);
+            }
+        });
+    }
+
+    downloadFileFromUrl(): void {
+        if (!this.pdfUrl) return;
+
+        const a = document.createElement('a');
+        a.href = this.pdfUrl;
+        a.download = `Calificaciones de ${this.studentData?.studentName}.pdf`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
     }
 
 }
