@@ -1,10 +1,8 @@
 <div class="page-header align-items-start min-vh-100"
-     style="background-image: url('https://images.unsplash.com/photo-1497294815431-9365093b7331?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80');"
->
+     style="background-image: url('https://images.unsplash.com/photo-1497294815431-9365093b7331?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80');">
     <span class="mask bg-gradient-dark opacity-6"></span>
     <div class="container my-auto">
-
-        <!-- Login Form -->
+        <!-- Formulario de Login (se mantiene igual) -->
         <div class="row" *ngIf="!studentData">
             <div class="col-lg-4 col-md-8 col-12 mx-auto">
                 <div class="card z-index-0 fadeIn3 fadeInBottom">
@@ -47,11 +45,12 @@
             </div>
         </div>
 
-        <!-- Vista of details students -->
+        <!-- Vista de información del estudiante y PDF -->
         <div class="row" *ngIf="studentData">
-            <div class="col-lg-9 col-md-10 col-12 mx-auto">
-                <div class="card z-index-0 fadeIn3 fadeInBottom mt-4">
-                    <div class="card-header p-0 position-relative mt-4 mx-3 z-index-2">
+            <!-- Columna de información (4 de ancho) -->
+            <div class="col-lg-4 col-md-5 col-12 mb-4 mb-lg-0">
+                <div class="card z-index-0 fadeIn3 fadeInBottom h-100">
+                    <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                         <div class="bg-gradient-success shadow-success border-radius-lg py-3 pe-1">
                             <h4 class="text-white font-weight-bolder text-center mt-2 mb-0">
                                 Bienvenido, {{ studentData.studentName }}
@@ -59,86 +58,64 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="p-3">
-                                    <h5 class="font-weight-bolder">Información del Estudiante</h5>
-                                    <ul class="list-group">
-                                        <li class="list-group-item border-0 ps-0 pt-0 text-sm">
-                                            <strong class="text-dark">ID
-                                                Estudiante:</strong> {{ studentData.studentId }}
-                                        </li>
-                                        <li class="list-group-item border-0 ps-0 text-sm">
-                                            <strong class="text-dark">Matrícula:</strong> {{ studentData.enrollment }}
-                                        </li>
-                                        <li class="list-group-item border-0 ps-0 text-sm">
-                                            <strong class="text-dark">Profesor:</strong> {{ studentData.teacherName }}
-                                        </li>
-                                        <li class="list-group-item border-0 ps-0 text-sm">
-                                            <strong class="text-dark">Solvencia:</strong>
-                                            <span [class.text-success]="studentData.hasSolvency"
-                                                  [class.text-danger]="!studentData.hasSolvency">
-                                                {{ studentData.hasSolvency ? 'Al día' : 'Pendiente' }}
-                                            </span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="p-3">
-                                    <h5 class="font-weight-bolder">Calificaciones</h5>
-                                    <!-- Aquí puedes agregar el componente de calificaciones -->
-                                    <p class="text-sm">Contenido de calificaciones aquí...</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Dentro de tu card-body, después de la información del estudiante -->
-                        <div class="row mt-4" *ngIf="studentData">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h5 class="mb-0">Calificaciones</h5>
-                                    </div>
-                                    <div class="card-body">
-                                        <!-- Botones de acción -->
-                                        <div class="d-flex justify-content-between mb-4">
-                                            <button *ngIf="pdfUrl" (click)="downloadFileFromUrl()"
-                                                    class="btn bg-gradient-info">
-                                                <i class="fas fa-download me-2"></i>Descargar PDF
-                                            </button>
-                                        </div>
+                        <h5 class="font-weight-bolder">Información del Estudiante</h5>
+                        <ul class="list-group">
+                            <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                                <strong class="text-dark">ID Estudiante:</strong> {{ studentData.studentId }}
+                            </li>
+                            <li class="list-group-item border-0 ps-0 text-sm">
+                                <strong class="text-dark">Matrícula:</strong> {{ studentData.enrollment }}
+                            </li>
+                            <li class="list-group-item border-0 ps-0 text-sm">
+                                <strong class="text-dark">Profesor:</strong> {{ studentData.teacherName }}
+                            </li>
+                            <li class="list-group-item border-0 ps-0 text-sm">
+                                <strong class="text-dark">Solvencia:</strong>
+                                <span [class.text-success]="studentData.hasSolvency"
+                                      [class.text-danger]="!studentData.hasSolvency">
+                                    {{ studentData.hasSolvency ? 'Al día' : 'Pendiente' }}
+                                </span>
+                            </li>
+                        </ul>
 
-                                        <!-- Visor de PDF -->
-                                        <div *ngIf="isPdfLoading" class="text-center py-5">
-                                            <div class="spinner-border text-primary" role="status">
-                                                <span class="visually-hidden">Cargando...</span>
-                                            </div>
-                                            <p class="mt-2">Cargando documento...</p>
-                                        </div>
-
-                                        <div *ngIf="pdfUrl && !isPdfLoading"
-                                             class="embed-responsive embed-responsive-16by9">
-                                            <iframe
-                                                [src]="pdfUrl | safe"
-                                                class="embed-responsive-item w-100"
-                                                style="height: 600px; border: none;">
-                                            </iframe>
-                                            <p *ngIf="!pdfUrl" class="text-muted text-center mt-3">
-                                                Presione "Ver Calificaciones PDF" para generar el documento
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="text-center mt-4">
-                            <button (click)="logout()" class="btn bg-gradient-dark w-25">Cerrar Sesión</button>
+                            <button (click)="logout()" class="btn bg-gradient-dark w-100">Cerrar Sesión</button>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Columna de PDF (8 de ancho) -->
+            <div class="col-lg-8 col-md-7 col-12">
+                <div class="card z-index-0 fadeIn3 fadeInBottom h-100">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Calificaciones</h5>
+                            <button *ngIf="pdfUrl" (click)="downloadFileFromUrl()" class="btn bg-gradient-info btn-sm">
+                                <i class="fas fa-download me-2"></i>Descargar PDF
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <!-- Visor de PDF -->
+                        <div *ngIf="isPdfLoading" class="text-center py-5">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Cargando...</span>
+                            </div>
+                            <p class="mt-2">Cargando documento...</p>
+                        </div>
+
+                        <div *ngIf="pdfUrl && !isPdfLoading" class="ratio ratio-16x9">
+                            <iframe [src]="pdfUrl | safe" style="border: none;"></iframe>
+                        </div>
+
+                        <p *ngIf="!pdfUrl" class="text-muted text-center mt-3">
+                            Presione "Ver Calificaciones PDF" para generar el documento
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 
