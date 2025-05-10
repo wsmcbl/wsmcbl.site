@@ -5,6 +5,7 @@ import {InfoComponent} from '../../base/info/info.component';
 import {QuestionsComponent} from '../../base/questions/questions.component';
 import {MisionVisionComponent} from '../../base/mision-vision/mision-vision.component';
 import {DetailsComponent} from '../../base/details/details.component';
+import {ValuesComponent} from '../../base/values/values.component';
 
 @Component({
     selector: 'app-homepage',
@@ -15,6 +16,7 @@ import {DetailsComponent} from '../../base/details/details.component';
         QuestionsComponent,
         MisionVisionComponent,
         DetailsComponent,
+        ValuesComponent,
     ],
     templateUrl: './homepage.component.html',
     styleUrl: './homepage.component.css'
