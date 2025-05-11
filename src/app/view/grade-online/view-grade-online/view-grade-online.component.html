@@ -61,13 +61,13 @@
                         <h5 class="font-weight-bolder">Información del Estudiante</h5>
                         <ul class="list-group">
                             <li class="list-group-item border-0 ps-0 pt-0 text-sm">
-                                <strong class="text-dark">ID Estudiante:</strong> {{ studentData.studentId }}
+                                <strong class="text-dark">Código del Estudiante:</strong> {{ studentData.studentId }}
                             </li>
                             <li class="list-group-item border-0 ps-0 text-sm">
                                 <strong class="text-dark">Matrícula:</strong> {{ studentData.enrollment }}
                             </li>
                             <li class="list-group-item border-0 ps-0 text-sm">
-                                <strong class="text-dark">Profesor:</strong> {{ studentData.teacherName }}
+                                <strong class="text-dark">Profesor Guía:</strong> {{ studentData.teacherName }}
                             </li>
                             <li class="list-group-item border-0 ps-0 text-sm">
                                 <strong class="text-dark">Solvencia:</strong>
@@ -109,13 +109,26 @@
                             <iframe [src]="pdfdata | safe" style="border: none;"></iframe>
                         </div>
 
-                        <p *ngIf="!studentData.hasSolvency" class="text-muted text-center mt-3">
-                            El estudiante no esta solvente {{studentData.hasSolvency}}
-                        </p>
+                        <div *ngIf="!studentData.hasSolvency" class="text-center mt-5">
+                            El estudiante no se encuentra solvente.
+                            <br>
+                            <small class="d-block mt-2">
+                                Si considera que esto es un error, contáctenos a través de:
+                            </small>
+                            <div class="mt-2">
+                                <a href="https://wa.me/50557458368" class="btn btn-sm btn-success me-2" target="_blank">
+                                    <i class="bi bi-whatsapp"></i> WhatsApp
+                                </a>
+                                <a href="mailto:soporte@cbl-edu.com" class="btn btn-sm btn-primary">
+                                    <i class="bi bi-envelope"></i> Correo electrónico
+                                </a>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
