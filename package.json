@@ -1,7 +1,7 @@
 {
     "name": "wsmcbl.site",
     "version": "1.0.0",
-    "description": "SITE WSMCBL SNAPSHOT. Aplicación desarrollada en Angular.",
+    "description": "SITE WSMCBL BETA. Aplicación desarrollada en Angular.",
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
