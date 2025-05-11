@@ -91,7 +91,7 @@
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
                             <h5 class="mb-0">Calificaciones</h5>
-                            <button *ngIf="pdfUrl && studentData.hasSolvency" (click)="downloadFileFromUrl()" class="btn bg-gradient-info btn-sm">
+                            <button *ngIf="pdfdata && studentData.hasSolvency" (click)="downloadFileFromUrl()" class="btn bg-gradient-info btn-sm">
                                 <i class="fas fa-download me-2"></i>Descargar PDF
                             </button>
                         </div>
@@ -105,12 +105,12 @@
                             <p class="mt-2">Cargando documento...</p>
                         </div>
 
-                        <div *ngIf="pdfUrl && !isPdfLoading" class="ratio ratio-16x9">
-                            <iframe [src]="pdfUrl | safe" style="border: none;"></iframe>
+                        <div *ngIf="pdfdata && !isPdfLoading" class="ratio ratio-16x9">
+                            <iframe [src]="pdfdata | safe" style="border: none;"></iframe>
                         </div>
 
-                        <p *ngIf="!pdfUrl" class="text-muted text-center mt-3">
-                            Presione "Ver Calificaciones PDF" para generar el documento
+                        <p *ngIf="!studentData.hasSolvency" class="text-muted text-center mt-3">
+                            El estudiante no esta solvente {{studentData.hasSolvency}}
                         </p>
                     </div>
                 </div>

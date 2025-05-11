@@ -24,7 +24,7 @@ export class ViewGradeOnlineComponent
     studentDto: { studentId: string, token: string } = {studentId: '', token: ''};
     isLoading = false;
     errorMessage = '';
-    pdfUrl: string | null = null;
+    pdfdata: string | null = null;
     isPdfLoading = false;
 
     constructor(private controller: ViewGradeOnlineController)
@@ -62,6 +62,7 @@ export class ViewGradeOnlineComponent
     {
         this.studentData = null;
         this.studentDto = {studentId: '', token: ''};
+        this.pdfdata = null;
     }
 
     getStudentFile(): void
@@ -71,7 +72,7 @@ export class ViewGradeOnlineComponent
             next: (blob) =>
             {
                 this.isPdfLoading = false;
-                this.pdfUrl = URL.createObjectURL(blob);
+                this.pdfdata = URL.createObjectURL(blob);
             },
             error: (err) =>
             {
@@ -83,10 +84,10 @@ export class ViewGradeOnlineComponent
 
     downloadFileFromUrl(): void
     {
-        if (!this.pdfUrl) return;
+        if (!this.pdfdata) return;
 
         const a = document.createElement('a');
-        a.href = this.pdfUrl;
+        a.href = this.pdfdata;
         a.download = `Calificaciones de ${this.studentData?.studentName}.pdf`;
         document.body.appendChild(a);
         a.click();
