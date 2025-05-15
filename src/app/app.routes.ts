@@ -5,6 +5,6 @@ import {RulersComponent} from './view/regulations/rulers/rulers.component';
 
 export const routes: Routes = [
   {path: '', component: HomepageComponent},
-  {path: 'view-grades', component: ViewGradeOnlineComponent},
+  {path: 'online-grades', component: ViewGradeOnlineComponent},
   {path: 'regulation', component: RulersComponent}
 ];
