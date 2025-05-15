@@ -1,0 +1,20 @@
+name: Deploy
+
+on:
+    push:
+        branches: ['master']
+
+jobs:
+    build:
+        name: Deploy on production
+        runs-on: ubuntu-latest
+        steps:
+            - name: Deploy commands
+              uses: appleboy/ssh-action@master
+              with:
+                  host: ${{ secrets.VPS_FRONT_HOST }}
+                  username: ${{ secrets.VPS_FRONT_USERNAME }}
+                  key: ${{ secrets.VPS_FRONT_KEY }}
+                  port: ${{ secrets.VPS_FRONT_PORT }}
+                  script: |
+                      ./deploy.site.sh
