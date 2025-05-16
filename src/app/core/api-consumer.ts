@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {ModuleType} from './module-type';
 import {catchError, Observable, throwError} from 'rxjs';
-import {environment} from '../environments/environment';
+import {environment} from '../environments/environment.prod';
 
 @Injectable({providedIn: 'root'})
 
@@ -50,7 +50,6 @@ export class ApiConsumer
 
     private handleError<T>(error: HttpErrorResponse, fallback: T): Observable<T>
     {
-        console.error('API error:', error);
         return throwError(() => new Error(error.error?.detail || 'Error de servidor'));
     }
 }
