@@ -45,7 +45,7 @@ export class ApiConsumer
             throw new Error('API URL is not configured.');
         }
 
-        return `${api}/v6`;
+        return `${api}/v7`;
     }
 
     private handleError<T>(error: HttpErrorResponse, fallback: T): Observable<T>
