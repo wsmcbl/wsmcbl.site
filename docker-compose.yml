@@ -6,7 +6,7 @@ services:
     restart: unless-stopped
     container_name: site
     ports:
-      - '4003:80'
+      - '4002:80'
     networks:
       - app-network
 
