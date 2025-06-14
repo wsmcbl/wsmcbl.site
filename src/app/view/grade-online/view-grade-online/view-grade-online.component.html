@@ -2,7 +2,8 @@
      style="background-image: url('https://images.unsplash.com/photo-1497294815431-9365093b7331?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80');">
     <span class="mask bg-gradient-dark opacity-6"></span>
     <div class="container my-auto">
-        <!-- Formulario de Login (se mantiene igual) -->
+
+        <!-- Formulario de Login-->
         <div class="row" *ngIf="!studentData">
             <div class="col-lg-4 col-md-8 col-12 mx-auto">
                 <div class="card z-index-0 fadeIn3 fadeInBottom">
@@ -47,7 +48,8 @@
 
         <!-- Vista de información del estudiante y PDF -->
         <div class="row" *ngIf="studentData">
-            <!-- Columna de información (4 de ancho) -->
+
+            <!-- Columna de información -->
             <div class="col-lg-4 col-md-5 col-12 mb-4 mb-lg-0">
                 <div class="card z-index-0 fadeIn3 fadeInBottom h-100">
                     <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
@@ -85,50 +87,75 @@
                 </div>
             </div>
 
-            <!-- Columna de PDF (8 de ancho) -->
+            <!-- Columna de PDF -->
             <div class="col-lg-8 col-md-7 col-12">
-                <div class="card z-index-0 fadeIn3 fadeInBottom h-100">
-                    <div class="card-header">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <h5 class="mb-0">Calificaciones</h5>
-                            <button *ngIf="pdfdata && studentData.hasSolvency" (click)="downloadFileFromUrl()" class="btn bg-gradient-info btn-sm">
-                                <i class="fas fa-download me-2"></i>Descargar PDF
-                            </button>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <!-- Visor de PDF -->
-                        <div *ngIf="isPdfLoading" class="text-center py-5">
-                            <div class="spinner-border text-primary" role="status">
-                                <span class="visually-hidden">Cargando...</span>
-                            </div>
-                            <p class="mt-2">Cargando documento...</p>
-                        </div>
 
-                        <div *ngIf="pdfdata && !isPdfLoading" class="ratio ratio-16x9">
-                            <iframe [src]="pdfdata | safe" style="border: none;"></iframe>
-                        </div>
-
-                        <div *ngIf="!studentData.hasSolvency" class="text-center mt-5">
-                            El estudiante no se encuentra solvente.
-                            <br>
-                            <small class="d-block mt-2">
-                                Si considera que esto es un error, contáctenos a través de:
-                            </small>
-                            <div class="mt-2">
-                                <a href="https://wa.me/50557458368" class="btn btn-sm btn-success me-2" target="_blank">
-                                    <i class="bi bi-whatsapp"></i> WhatsApp
-                                </a>
-                                <a href="mailto:soporte@cbl-edu.com" class="btn btn-sm btn-primary">
-                                    <i class="bi bi-envelope"></i> Correo electrónico
-                                </a>
+                <div *ngIf="ShowGrade; else noPasada">
+                    <div class="card z-index-0 fadeIn3 fadeInBottom h-100">
+                        <div class="card-header">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">Calificaciones</h5>
+                                <button *ngIf="pdfData && studentData.hasSolvency" (click)="downloadFileFromUrl()"
+                                        class="btn bg-gradient-info btn-sm">
+                                    <i class="fas fa-download me-2"></i>Descargar PDF
+                                </button>
                             </div>
                         </div>
+                        <div class="card-body">
+                            <!-- Visor de PDF -->
+                            <div *ngIf="isPdfLoading" class="text-center py-5">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Cargando...</span>
+                                </div>
+                                <p class="mt-2">Cargando documento...</p>
+                            </div>
+
+                            <div *ngIf="pdfData && !isPdfLoading" class="ratio ratio-16x9">
+                                <iframe [src]="pdfData | safe" style="border: none;"></iframe>
+                            </div>
+
+                            <div *ngIf="!studentData.hasSolvency" class="text-center mt-5">
+                                El estudiante no se encuentra solvente.
+                                <br>
+                                <small class="d-block mt-2">
+                                    Si considera que esto es un error, contáctenos a través de:
+                                </small>
+                                <div class="mt-2">
+                                    <a href="https://wa.me/50557458368" class="btn btn-sm btn-success me-2"
+                                       target="_blank">
+                                        <i class="bi bi-whatsapp"></i> WhatsApp
+                                    </a>
+                                    <a href="mailto:soporte@cbl-edu.com" class="btn btn-sm btn-primary">
+                                        <i class="bi bi-envelope"></i> Correo electrónico
+                                    </a>
+                                </div>
+                            </div>
 
 
+                        </div>
                     </div>
                 </div>
+                <ng-template #noPasada>
+                    <div class="card z-index-0 fadeIn3 fadeInBottom h-100">
+                        <div class="card-header">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">Calificaciones</h5>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center mt-4">
+                                El registro de calificaciones del II Corte estará disponible él:
+                                <br>
+                                <small class="d-block mb-6">
+                                    {{ getFormattedDate() }}
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+
             </div>
+
         </div>
     </div>
 </div>

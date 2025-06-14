@@ -24,11 +24,31 @@ export class ViewGradeOnlineComponent
     studentDto: { studentId: string, token: string } = {studentId: '', token: ''};
     isLoading = false;
     errorMessage = '';
-    pdfdata: string | null = null;
+    pdfData: string | null = null;
     isPdfLoading = false;
+
+
+    dateToShowGrade: Date;
+    ShowGrade: boolean;
 
     constructor(private controller: ViewGradeOnlineController)
     {
+        this.dateToShowGrade = new Date(Date.UTC(2025, 6, 16, 13, 0, 0));
+        const now = new Date();
+        this.ShowGrade = now > this.dateToShowGrade;
+    }
+
+    getFormattedDate(): string {
+        const localDate = new Date(this.dateToShowGrade);
+        localDate.setHours(localDate.getHours() - 6);
+
+        return localDate.toLocaleString('es-MX', {
+            timeZone: 'UTC',
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+        });
     }
 
     onSubmit(form: any): void
@@ -62,7 +82,7 @@ export class ViewGradeOnlineComponent
     {
         this.studentData = null;
         this.studentDto = {studentId: '', token: ''};
-        this.pdfdata = null;
+        this.pdfData = null;
     }
 
     getStudentFile(): void
@@ -72,7 +92,7 @@ export class ViewGradeOnlineComponent
             next: (blob) =>
             {
                 this.isPdfLoading = false;
-                this.pdfdata = URL.createObjectURL(blob);
+                this.pdfData = URL.createObjectURL(blob);
             },
             error: (err) =>
             {
@@ -84,10 +104,10 @@ export class ViewGradeOnlineComponent
 
     downloadFileFromUrl(): void
     {
-        if (!this.pdfdata) return;
+        if (!this.pdfData) return;
 
         const a = document.createElement('a');
-        a.href = this.pdfdata;
+        a.href = this.pdfData;
         a.download = `Calificaciones de ${this.studentData?.studentName}.pdf`;
         document.body.appendChild(a);
         a.click();
