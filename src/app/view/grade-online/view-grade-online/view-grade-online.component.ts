@@ -33,7 +33,7 @@ export class ViewGradeOnlineComponent
 
     constructor(private controller: ViewGradeOnlineController)
     {
-        this.dateToShowGrade = new Date(Date.UTC(2025, 6, 16, 13, 0, 0));
+        this.dateToShowGrade = new Date(Date.UTC(2025, 6, 28, 13, 0, 0));
         const now = new Date();
         this.ShowGrade = now > this.dateToShowGrade;
     }
